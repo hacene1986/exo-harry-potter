@@ -1,0 +1,66 @@
+
+  <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="text-5xl  text-center" *ngIf="!bookBasket">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+        Vous avez aucun article dans votre pannier
+        </span>
+    </div>
+    <div class="flow-root" *ngIf="bookBasket">
+      <ul role="list" class="-my-6 divide-y divide-gray-200">
+        <li class="flex py-6" *ngFor="let book of bookBasket">
+          <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+            <img src={{book.cover}} alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt." class="h-full w-full object-cover object-center">
+          </div>
+
+          <div class="ml-4 flex flex-1 flex-col">
+            <div>
+              <div class="flex justify-between text-base font-medium text-gray-900">
+                <h3>
+                  <a href="#">{{book.title}} </a>
+                </h3>
+                <p class="ml-4">${{book.price}} </p>
+              </div>
+              <!-- <p class="mt-1 text-sm text-gray-500">Salmon</p> -->
+            </div>
+            <div class="flex flex-1 items-end justify-between text-sm">
+              <p class="text-gray-500"></p>
+
+              <!-- <div class="flex">
+                <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+              </div> -->
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
+        <div class="flex justify-between text-base font-medium text-gray-900">
+          <p>Total enssemble de livres aprés réduction</p>
+          <p>$ {{reductionEnssembleBooks}}</p>
+        </div>
+        <div class="flex justify-between text-base font-medium text-gray-900">
+            <p>Total enssemble de livres payement direct en caisse</p>
+            <p>$ {{reductionPayementCaisse}}</p>
+        </div>
+        <div class="flex justify-between text-base font-medium text-gray-900" *ngIf="prixAllBooks >= 100">
+            <p>Total enssemble de livres pour un achat de plus de 100$</p>
+            <p>$ {{reductionTranche}}</p>
+        </div>
+        <!-- <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p> -->
+        <div class="mt-6">
+          <a href="#" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Valider</a>
+        </div>
+        <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
+          <p>
+            or
+            <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500" (click)="viderPannier()">
+              Vider le pannier
+              <span aria-hidden="true"> &rarr;</span>
+            </button>
+          </p>
+        </div>
+      </div>
+  </div>
+</div>
+    
+  
